@@ -1,6 +1,6 @@
 # TUGAS BESAR 2 STRUKTUR DATA | MEMBANDINGKAN METODE SORT
 
-## Penjelasan Kode Bubble Sort Visualized
+## Penjelasan Kode Bubble Sort Visualized : `TB2_BubbleSort.py`
 
 ### Import Modul
 - `import random`: Mengimpor modul `random` untuk menghasilkan data acak.
@@ -49,58 +49,8 @@
 - `ani = animation.FuncAnimation(...)`: Membuat animasi dengan memperbarui grafik pada setiap frame.
 - `plt.show()`: Menampilkan visualisasi.
 
-## Penjelasan Kode Insertion Sort Visualized
 
-### Import Modul
-- `import random`: Mengimpor modul `random` untuk menghasilkan data acak.
-- `import matplotlib.pyplot as plt`: Mengimpor `pyplot` dari `matplotlib` untuk visualisasi data.
-- `import matplotlib.animation as animation`: Mengimpor `animation` dari `matplotlib` untuk membuat animasi visualisasi.
-- `import easygui`: Mengimpor `easygui` untuk membuat GUI sederhana yang memungkinkan pengguna memasukkan data.
-- `import time`: Mengimpor modul `time` untuk mengukur waktu eksekusi.
-
-### Fungsi Insertion Sort Visualized
-- Mendefinisikan fungsi `insertion_sort_visualized(arr)` yang menerima array `arr` sebagai parameter:
-  - `n = len(arr)`: Mendapatkan panjang array.
-  - `steps = []`: Inisialisasi list untuk menyimpan langkah-langkah sorting.
-  - Looping `for i in range(1, n)`: Mengakses setiap elemen array mulai dari elemen kedua.
-  - `key = arr[i]`: Menyimpan elemen saat ini sebagai kunci.
-  - `j = i - 1`: Inisialisasi variabel `j` untuk membandingkan elemen sebelumnya.
-  - Looping `while j >= 0 and key < arr[j]`: Memindahkan elemen yang lebih besar dari kunci satu posisi ke depan dari posisi saat ini.
-  - `arr[j + 1] = key`: Menempatkan kunci pada posisi yang benar.
-  - `steps.append(arr.copy())`: Menambahkan salinan array saat ini ke dalam `steps`.
-  - `return steps`: Mengembalikan langkah-langkah sorting.
-
-### Fungsi Update Fig
-- Mendefinisikan fungsi `update_fig(arr, rects, texts, start_time)` untuk memperbarui visualisasi pada setiap frame:
-  - `elapsed_time = time.time() - start_time`: Menghitung waktu yang telah berlalu.
-  - Looping untuk memperbarui tinggi dan teks dari setiap batang pada grafik.
-  - `ax.set_title(...)`: Memperbarui judul grafik dengan waktu yang telah berlalu.
-
-### Interaksi Pengguna dan Pembuatan Array Acak
-- `num_indices = int(easygui.enterbox(...))`: Meminta pengguna memasukkan jumlah indeks.
-- `value_range = int(easygui.enterbox(...))`: Meminta pengguna memasukkan batasan nilai maksimum.
-- `arr = random.sample(range(1, value_range + 1), num_indices)`: Membuat array acak berdasarkan input pengguna.
-
-### Pengukuran Waktu dan Visualisasi
-- `start_time = time.time()`: Menyimpan waktu mulai.
-- `steps = insertion_sort_visualized(arr)`: Melakukan insertion sort sambil memvisualisasikannya.
-- `end_time = time.time()`: Menyimpan waktu selesai.
-- `elapsed_time = end_time - start_time`: Menghitung waktu yang dibutuhkan untuk proses sorting.
-- `print(...)`: Mencetak waktu yang dibutuhkan.
-
-### Setup Visualisasi
-- `plt.style.use('dark_background')`: Mengatur tema visualisasi menjadi dark background.
-- `fig, ax = plt.subplots(...)`: Membuat subplot untuk visualisasi.
-- `colors = [plt.cm.viridis(i / len(arr)) for i in range(len(arr))]`: Mengatur warna batang.
-- `rects = ax.bar(...)`: Membuat batang pada grafik berdasarkan langkah pertama dari sorting.
-- `texts = [ax.text(...) for rect in rects]`: Menambahkan teks pada setiap batang.
-- `ax.set_xlim(0, len(arr))`, `ax.set_ylim(0, int(1.1 * max(arr)))`: Mengatur batas x dan y pada grafik.
-
-### Animasi dan Tampilan
-- `ani = animation.FuncAnimation(...)`: Membuat animasi dengan memperbarui grafik pada setiap frame.
-- `plt.show()`: Menampilkan visualisasi.
-
-## Penjelasan Kode Heap Sort Visualized
+## Penjelasan Kode Heap Sort Visualized : `TB2_HeepSort.py`
 
 ### Import Modul
 - `import random`: Mengimpor modul `random` untuk menghasilkan data acak.
@@ -151,7 +101,60 @@
 - Membuat animasi dengan memperbarui grafik pada setiap frame.
 - Menampilkan visualisasi.
 
-## Penjelasan Kode Merge Sort Visualized
+
+## Penjelasan Kode Insertion Sort Visualized : `TB2_InsertionSort.py`
+
+### Import Modul
+- `import random`: Mengimpor modul `random` untuk menghasilkan data acak.
+- `import matplotlib.pyplot as plt`: Mengimpor `pyplot` dari `matplotlib` untuk visualisasi data.
+- `import matplotlib.animation as animation`: Mengimpor `animation` dari `matplotlib` untuk membuat animasi visualisasi.
+- `import easygui`: Mengimpor `easygui` untuk membuat GUI sederhana yang memungkinkan pengguna memasukkan data.
+- `import time`: Mengimpor modul `time` untuk mengukur waktu eksekusi.
+
+### Fungsi Insertion Sort Visualized
+- Mendefinisikan fungsi `insertion_sort_visualized(arr)` yang menerima array `arr` sebagai parameter:
+  - `n = len(arr)`: Mendapatkan panjang array.
+  - `steps = []`: Inisialisasi list untuk menyimpan langkah-langkah sorting.
+  - Looping `for i in range(1, n)`: Mengakses setiap elemen array mulai dari elemen kedua.
+  - `key = arr[i]`: Menyimpan elemen saat ini sebagai kunci.
+  - `j = i - 1`: Inisialisasi variabel `j` untuk membandingkan elemen sebelumnya.
+  - Looping `while j >= 0 and key < arr[j]`: Memindahkan elemen yang lebih besar dari kunci satu posisi ke depan dari posisi saat ini.
+  - `arr[j + 1] = key`: Menempatkan kunci pada posisi yang benar.
+  - `steps.append(arr.copy())`: Menambahkan salinan array saat ini ke dalam `steps`.
+  - `return steps`: Mengembalikan langkah-langkah sorting.
+
+### Fungsi Update Fig
+- Mendefinisikan fungsi `update_fig(arr, rects, texts, start_time)` untuk memperbarui visualisasi pada setiap frame:
+  - `elapsed_time = time.time() - start_time`: Menghitung waktu yang telah berlalu.
+  - Looping untuk memperbarui tinggi dan teks dari setiap batang pada grafik.
+  - `ax.set_title(...)`: Memperbarui judul grafik dengan waktu yang telah berlalu.
+
+### Interaksi Pengguna dan Pembuatan Array Acak
+- `num_indices = int(easygui.enterbox(...))`: Meminta pengguna memasukkan jumlah indeks.
+- `value_range = int(easygui.enterbox(...))`: Meminta pengguna memasukkan batasan nilai maksimum.
+- `arr = random.sample(range(1, value_range + 1), num_indices)`: Membuat array acak berdasarkan input pengguna.
+
+### Pengukuran Waktu dan Visualisasi
+- `start_time = time.time()`: Menyimpan waktu mulai.
+- `steps = insertion_sort_visualized(arr)`: Melakukan insertion sort sambil memvisualisasikannya.
+- `end_time = time.time()`: Menyimpan waktu selesai.
+- `elapsed_time = end_time - start_time`: Menghitung waktu yang dibutuhkan untuk proses sorting.
+- `print(...)`: Mencetak waktu yang dibutuhkan.
+
+### Setup Visualisasi
+- `plt.style.use('dark_background')`: Mengatur tema visualisasi menjadi dark background.
+- `fig, ax = plt.subplots(...)`: Membuat subplot untuk visualisasi.
+- `colors = [plt.cm.viridis(i / len(arr)) for i in range(len(arr))]`: Mengatur warna batang.
+- `rects = ax.bar(...)`: Membuat batang pada grafik berdasarkan langkah pertama dari sorting.
+- `texts = [ax.text(...) for rect in rects]`: Menambahkan teks pada setiap batang.
+- `ax.set_xlim(0, len(arr))`, `ax.set_ylim(0, int(1.1 * max(arr)))`: Mengatur batas x dan y pada grafik.
+
+### Animasi dan Tampilan
+- `ani = animation.FuncAnimation(...)`: Membuat animasi dengan memperbarui grafik pada setiap frame.
+- `plt.show()`: Menampilkan visualisasi.
+
+
+## Penjelasan Kode Merge Sort Visualized : `TB2_MergeSort.py`
 
 ### Import Modul
 - `import random`: Mengimpor modul `random` untuk menghasilkan data acak.
@@ -201,7 +204,8 @@
 - Membuat animasi dengan memperbarui grafik pada setiap frame.
 - Menampilkan visualisasi.
 
-## Penjelasan Kode Quick Sort Visualized
+
+## Penjelasan Kode Quick Sort Visualized : `TB2_QuickSort.py`
 
 ### Import Modul
 - `import random`: Mengimpor modul `random` untuk menghasilkan data acak.
@@ -250,7 +254,8 @@
 - Membuat animasi dengan memperbarui grafik pada setiap frame.
 - Menampilkan visualisasi.
 
-## Penjelasan Kode Visualisasi Selection Sort
+
+## Penjelasan Kode Visualisasi Selection Sort : `TB2_SelectionSort.py`
 
 ### Import Modul
 - `import random`: Mengimpor modul `random` untuk menghasilkan data acak.
