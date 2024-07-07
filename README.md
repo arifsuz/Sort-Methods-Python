@@ -1,307 +1,307 @@
-# TUGAS BESAR 2 STRUKTUR DATA | MEMBANDINGKAN METODE SORT
+  # BIG ASSIGNMENT 2 DATA STRUCTURES | COMPARING SORT METHODS
 
-## Penjelasan Kode Bubble Sort Visualized : `TB2_BubbleSort.py`
+## Visualized Bubble Sort Code Explanation: `TB2_BubbleSort.py`
 
-### Import Modul
-- `import random`: Mengimpor modul `random` untuk menghasilkan data acak.
-- `import matplotlib.pyplot as plt`: Mengimpor `pyplot` dari `matplotlib` untuk visualisasi data.
-- `import matplotlib.animation as animation`: Mengimpor `animation` dari `matplotlib` untuk membuat animasi visualisasi.
-- `import easygui`: Mengimpor `easygui` untuk membuat GUI sederhana yang memungkinkan pengguna memasukkan data.
-- `import time`: Mengimpor modul `time` untuk mengukur waktu eksekusi.
+### Import Module
+- `import random`: Imports the `random` module to generate random data.
+- `import matplotlib.pyplot as plt`: Imports `pyplot` from `matplotlib` for data visualization.
+- `import matplotlib.animation as animation`: Imports `animation` from `matplotlib` to animate the visualization.
+- `import easygui`: Imports `easygui` to create a simple GUI that allows users to enter data.
+- `import time`: Imports the `time` module to measure execution time.
 
-### Fungsi Bubble Sort Visualized
-- Mendefinisikan fungsi `bubble_sort_visualized(arr)` yang menerima array `arr` sebagai parameter:
-  - `n = len(arr)`: Mendapatkan panjang array.
-  - `steps = []`: Inisialisasi list untuk menyimpan langkah-langkah sorting.
-  - Looping luar `for i in range(n)`: Mengakses setiap elemen array.
-  - Looping dalam `for j in range(0, n-i-1)`: Membandingkan elemen array.
-  - `if arr[j] > arr[j+1]`: Jika elemen saat ini lebih besar dari elemen berikutnya, tukar elemen tersebut.
-  - `steps.append(arr.copy())`: Menambahkan salinan array saat ini ke dalam `steps`.
-  - `return steps`: Mengembalikan langkah-langkah sorting.
+### Visualized Bubble Sort Function
+- Defines the function `bubble_sort_visualized(arr)` which accepts an array `arr` as parameter:
+  - `n = len(arr)`: Gets the length of the array.
+  - `steps = []`: Initialize a list to store the sorting steps.
+  - Outer looping `for i in range(n)`: Accesses each element of the array.
+  - Inner looping `for j in range(0, n-i-1)`: Compares array elements.
+  - `if arr[j] > arr[j+1]`: If the current element is greater than the next element, swap the elements.
+  - `steps.append(arr.copy())`: Adds a copy of the current array into `steps`.
+  - `return steps`: Returns the sorting steps.
 
-### Fungsi Update Fig
-- Mendefinisikan fungsi `update_fig(arr, rects, texts, start_time)` untuk memperbarui visualisasi pada setiap frame:
-  - `elapsed_time = time.time() - start_time`: Menghitung waktu yang telah berlalu.
-  - Looping untuk memperbarui tinggi dan teks dari setiap batang pada grafik.
-  - `ax.set_title(...)`: Memperbarui judul grafik dengan waktu yang telah berlalu.
+### Update Fig Function
+- Defines the function `update_fig(arr, rects, texts, start_time)` to update the visualization at each frame:
+  - `elapsed_time = time.time() - start_time`: Calculates the elapsed time.
+  - Looping to update the height and texts of each bar on the graph.
+  - `ax.set_title(...)`: Updates the chart title with the elapsed time.
 
-### Interaksi Pengguna dan Pembuatan Array Acak
-- `num_indices = int(easygui.enterbox(...))`: Meminta pengguna memasukkan jumlah indeks.
-- `value_range = int(easygui.enterbox(...))`: Meminta pengguna memasukkan batasan nilai maksimum.
-- `arr = random.sample(range(1, value_range + 1), num_indices)`: Membuat array acak berdasarkan input pengguna.
+### User Interaction and Random Array Creation
+- `num_indices = int(easygui.enterbox(...))`: Prompts the user to enter the number of indices.
+- `value_range = int(easygui.enterbox(...))`: Prompts the user to enter the maximum value range.
+- `arr = random.sample(range(1, value_range + 1), num_indices)`: Generates a random array based on user input.
 
-### Pengukuran Waktu dan Visualisasi
-- `start_time = time.time()`: Menyimpan waktu mulai.
-- `steps = bubble_sort_visualized(arr)`: Melakukan bubble sort sambil memvisualisasikannya.
-- `end_time = time.time()`: Menyimpan waktu selesai.
-- `elapsed_time = end_time - start_time`: Menghitung waktu yang dibutuhkan untuk proses sorting.
-- `print(...)`: Mencetak waktu yang dibutuhkan.
+### Time Measurement and Visualization
+- `start_time = time.time()`: Stores the start time.
+- `steps = bubble_sort_visualized(arr)`: Performs bubble sort while visualizing it.
+- `end_time = time.time()`: Stores the end time.
+- `elapsed_time = end_time - start_time`: Calculates the time taken for the sorting process.
+- `print(...)`: Prints the time taken.
 
-### Setup Visualisasi
-- `plt.style.use('dark_background')`: Mengatur tema visualisasi menjadi dark background.
-- `fig, ax = plt.subplots(...)`: Membuat subplot untuk visualisasi.
-- `colors = [plt.cm.viridis(i / len(arr)) for i in range(len(arr))]`: Mengatur warna batang.
-- `rects = ax.bar(...)`: Membuat batang pada grafik berdasarkan langkah pertama dari sorting.
-- `texts = [ax.text(...) for rect in rects]`: Menambahkan teks pada setiap batang.
-- `ax.set_xlim(0, len(arr))`, `ax.set_ylim(0, int(1.1 * max(arr)))`: Mengatur batas x dan y pada grafik.
+### Visualization Setup
+- `plt.style.use('dark_background')`: Sets the visualization theme to dark background.
+- `fig,ax = plt.subplots(...)`: Create subplots for the visualization.
+- `colors = [plt.cm.viridis(i / len(arr)) for i in range(len(arr))]`: Set the color of the bar.
+- `rects = ax.bar(...)`: Creates a bar on the chart based on the first step of sorting.
+- `texts = [ax.text(...) for rect in rects]`: Adds text to each bar.
+- `ax.set_xlim(0, len(arr))`, `ax.set_ylim(0, int(1.1 * max(arr)))`: Set the x and y limits on the graph.
 
-### Animasi dan Tampilan
-- `ani = animation.FuncAnimation(...)`: Membuat animasi dengan memperbarui grafik pada setiap frame.
-- `plt.show()`: Menampilkan visualisasi.
-
-
-## Penjelasan Kode Heap Sort Visualized : `TB2_HeepSort.py`
-
-### Import Modul
-- `import random`: Mengimpor modul `random` untuk menghasilkan data acak.
-- `import matplotlib.pyplot as plt`: Mengimpor `pyplot` dari `matplotlib` untuk visualisasi data.
-- `import matplotlib.animation as animation`: Mengimpor `animation` dari `matplotlib` untuk membuat animasi visualisasi.
-- `import easygui`: Mengimpor `easygui` untuk membuat GUI sederhana yang memungkinkan pengguna memasukkan data.
-- `import time`: Mengimpor modul `time` untuk mengukur waktu eksekusi.
-
-### Fungsi Heapify
-- `def heapify(arr, n, i, steps)`: Mendefinisikan fungsi `heapify` untuk mengatur ulang heap.
-  - `largest = i`: Menetapkan indeks awal sebagai elemen terbesar.
-  - `left = 2 * i + 1`: Menghitung indeks anak kiri dari elemen saat ini.
-  - `right = 2 * i + 2`: Menghitung indeks anak kanan dari elemen saat ini.
-  - `if left < n and arr[left] > arr[largest]`: Jika anak kiri lebih besar dari elemen terbesar saat ini, perbarui `largest`.
-  - `if right < n and arr[right] > arr[largest]`: Jika anak kanan lebih besar dari `largest`, perbarui `largest`.
-  - `if largest != i`: Jika `largest` bukan elemen saat ini, tukar dan lakukan rekursi `heapify`.
-
-### Fungsi Heap Sort Visualized
-- `def heap_sort_visualized(arr, steps)`: Mendefinisikan fungsi untuk melakukan heap sort dan visualisasi.
-  - `n = len(arr)`: Mendapatkan panjang array.
-  - Loop untuk membangun heap.
-  - Loop untuk mengekstrak elemen satu per satu dari heap.
-  - `steps.append(arr.copy())`: Menambahkan salinan array saat ini ke dalam `steps` setelah setiap pertukaran.
-
-### Fungsi Update Fig
-- `def update_fig(arr, rects, texts, start_time)`: Mendefinisikan fungsi untuk memperbarui visualisasi pada setiap frame.
-  - `elapsed_time = time.time() - start_time`: Menghitung waktu yang telah berlalu.
-  - Loop untuk memperbarui tinggi dan teks dari setiap batang pada grafik.
-  - `ax.set_title(...)`: Memperbarui judul grafik dengan waktu yang telah berlalu.
-
-### Interaksi Pengguna dan Pembuatan Array Acak
-- Meminta pengguna memasukkan jumlah indeks dan batasan nilai maksimum indeks.
-- Membuat array acak berdasarkan input pengguna.
-
-### Pengukuran Waktu dan Visualisasi
-- Menyimpan waktu mulai dan selesai.
-- Menghitung dan mencetak waktu yang dibutuhkan untuk proses sorting.
-
-### Setup Visualisasi
-- Mengatur tema visualisasi menjadi dark background.
-- Membuat subplot untuk visualisasi.
-- Mengatur warna batang.
-- Membuat batang pada grafik berdasarkan langkah pertama dari sorting.
-- Menambahkan teks pada setiap batang.
-- Mengatur batas x dan y pada grafik.
-
-### Animasi dan Tampilan
-- Membuat animasi dengan memperbarui grafik pada setiap frame.
-- Menampilkan visualisasi.
+### Animation and Display
+- `ani = animation.FuncAnimation(...)`: Creates an animation by updating the graph at each frame.
+- `plt.show()`: Display the visualization.
 
 
-## Penjelasan Kode Insertion Sort Visualized : `TB2_InsertionSort.py`
+## Visualized Heap Sort Code Explanation: `TB2_HeepSort.py`
 
-### Import Modul
-- `import random`: Mengimpor modul `random` untuk menghasilkan data acak.
-- `import matplotlib.pyplot as plt`: Mengimpor `pyplot` dari `matplotlib` untuk visualisasi data.
-- `import matplotlib.animation as animation`: Mengimpor `animation` dari `matplotlib` untuk membuat animasi visualisasi.
-- `import easygui`: Mengimpor `easygui` untuk membuat GUI sederhana yang memungkinkan pengguna memasukkan data.
-- `import time`: Mengimpor modul `time` untuk mengukur waktu eksekusi.
+### Import Module
+- `import random`: Imports the `random` module to generate random data.
+- `import matplotlib.pyplot as plt`: Imports `pyplot` from `matplotlib` for data visualization.
+- `import matplotlib.animation as animation`: Imports `animation` from `matplotlib` to animate the visualization.
+- `import easygui`: Imports `easygui` to create a simple GUI that allows users to enter data.
+- `import time`: Imports the `time` module to measure execution time.
 
-### Fungsi Insertion Sort Visualized
-- Mendefinisikan fungsi `insertion_sort_visualized(arr)` yang menerima array `arr` sebagai parameter:
-  - `n = len(arr)`: Mendapatkan panjang array.
-  - `steps = []`: Inisialisasi list untuk menyimpan langkah-langkah sorting.
-  - Looping `for i in range(1, n)`: Mengakses setiap elemen array mulai dari elemen kedua.
-  - `key = arr[i]`: Menyimpan elemen saat ini sebagai kunci.
-  - `j = i - 1`: Inisialisasi variabel `j` untuk membandingkan elemen sebelumnya.
-  - Looping `while j >= 0 and key < arr[j]`: Memindahkan elemen yang lebih besar dari kunci satu posisi ke depan dari posisi saat ini.
-  - `arr[j + 1] = key`: Menempatkan kunci pada posisi yang benar.
-  - `steps.append(arr.copy())`: Menambahkan salinan array saat ini ke dalam `steps`.
-  - `return steps`: Mengembalikan langkah-langkah sorting.
+### Heapify function
+- `def heapify(arr, n, i, steps)`: Defines the `heapify` function to reset the heap.
+  - `largest = i`: Sets the start index as the largest element.
+  - `left = 2*i+1`: Calculates the left child index of the current element.
+  - `right = 2 * i + 2`: Calculates the right child index of the current element.
+  - `if left < n and arr[left] > arr[largest]`: If the left child is larger than the current largest element, update `largest`.
+  - `if right < n and arr[right] > arr[largest]`: If the right child is larger than `largest`, update `largest`.
+  - `if largest != i`: If `largest` is not the current element, swap and perform `heapify` recursion.
 
-### Fungsi Update Fig
-- Mendefinisikan fungsi `update_fig(arr, rects, texts, start_time)` untuk memperbarui visualisasi pada setiap frame:
-  - `elapsed_time = time.time() - start_time`: Menghitung waktu yang telah berlalu.
-  - Looping untuk memperbarui tinggi dan teks dari setiap batang pada grafik.
-  - `ax.set_title(...)`: Memperbarui judul grafik dengan waktu yang telah berlalu.
+### Heap Sort Visualized function
+- `def heap_sort_visualized(arr, steps)`: Defines the function to perform heap sort and visualization.
+  - `n = len(arr)`: Get the length of the array.
+  - Loop to build the heap.
+  - Loop to extract elements one by one from the heap.
+  - `steps.append(arr.copy())`: Adds a copy of the current array into `steps` after each exchange.
 
-### Interaksi Pengguna dan Pembuatan Array Acak
-- `num_indices = int(easygui.enterbox(...))`: Meminta pengguna memasukkan jumlah indeks.
-- `value_range = int(easygui.enterbox(...))`: Meminta pengguna memasukkan batasan nilai maksimum.
-- `arr = random.sample(range(1, value_range + 1), num_indices)`: Membuat array acak berdasarkan input pengguna.
+### Update Fig Function
+- `def update_fig(arr, rects, texts, start_time)`: Defines a function to update the visualization at each frame.
+  - `elapsed_time = time.time() - start_time`: Calculates the elapsed time.
+  - Loop to update the height and text of each bar on the graph.
+  - `ax.set_title(...)`: Updates the chart title with the elapsed time.
 
-### Pengukuran Waktu dan Visualisasi
-- `start_time = time.time()`: Menyimpan waktu mulai.
-- `steps = insertion_sort_visualized(arr)`: Melakukan insertion sort sambil memvisualisasikannya.
-- `end_time = time.time()`: Menyimpan waktu selesai.
-- `elapsed_time = end_time - start_time`: Menghitung waktu yang dibutuhkan untuk proses sorting.
-- `print(...)`: Mencetak waktu yang dibutuhkan.
+### User Interaction and Random Array Generation
+- Prompts the user to input the number of indexes and the maximum index value constraint.
+- Generates a random array based on user input.
 
-### Setup Visualisasi
-- `plt.style.use('dark_background')`: Mengatur tema visualisasi menjadi dark background.
-- `fig, ax = plt.subplots(...)`: Membuat subplot untuk visualisasi.
-- `colors = [plt.cm.viridis(i / len(arr)) for i in range(len(arr))]`: Mengatur warna batang.
-- `rects = ax.bar(...)`: Membuat batang pada grafik berdasarkan langkah pertama dari sorting.
-- `texts = [ax.text(...) for rect in rects]`: Menambahkan teks pada setiap batang.
-- `ax.set_xlim(0, len(arr))`, `ax.set_ylim(0, int(1.1 * max(arr)))`: Mengatur batas x dan y pada grafik.
+### Time Measurement and Visualization
+- Stores the start and end time.
+- Calculates and prints the time required for the sorting process.
 
-### Animasi dan Tampilan
-- `ani = animation.FuncAnimation(...)`: Membuat animasi dengan memperbarui grafik pada setiap frame.
-- `plt.show()`: Menampilkan visualisasi.
+### Visualization Setup
+- Set the visualization theme to dark background.
+- Create subplots for visualization.
+- Set the bar color.
+- Create bars on the graph based on the first step of sorting.
+- Add text to each bar.
+- Set the x and y borders on the chart.
 
-
-## Penjelasan Kode Merge Sort Visualized : `TB2_MergeSort.py`
-
-### Import Modul
-- `import random`: Mengimpor modul `random` untuk menghasilkan data acak.
-- `import matplotlib.pyplot as plt`: Mengimpor `pyplot` dari `matplotlib` untuk visualisasi data.
-- `import matplotlib.animation as animation`: Mengimpor `animation` dari `matplotlib` untuk membuat animasi visualisasi.
-- `import easygui`: Mengimpor `easygui` untuk membuat GUI sederhana yang memungkinkan pengguna memasukkan data.
-- `import time`: Mengimpor modul `time` untuk mengukur waktu eksekusi.
-
-### Fungsi Merge Sort Visualized
-- `def merge_sort_visualized(arr, steps, left=0, right=None)`: Mendefinisikan fungsi untuk melakukan merge sort dan visualisasi.
-  - `if right is None`: Jika `right` belum ditentukan, set ke panjang array.
-  - `if right - left > 1`: Jika sub-array memiliki lebih dari satu elemen, lanjutkan pembagian.
-  - `mid = (left + right) // 2`: Tentukan titik tengah.
-  - Rekursif memanggil `merge_sort_visualized` untuk sub-array kiri dan kanan.
-  - Memanggil fungsi `merge` untuk menggabungkan sub-array.
-
-### Fungsi Merge
-- `def merge(arr, steps, left, mid, right)`: Mendefinisikan fungsi untuk menggabungkan dua sub-array.
-  - `L = arr[left:mid]` dan `R = arr[mid:right]`: Membagi array menjadi dua bagian.
-  - `i = j = 0` dan `k = left`: Inisialisasi indeks untuk sub-array kiri, kanan, dan array gabungan.
-  - Looping untuk membandingkan dan menggabungkan elemen dari kedua sub-array.
-  - Menambahkan elemen yang tersisa dari sub-array kiri atau kanan jika ada.
-  - `steps.append(arr.copy())`: Menambahkan salinan array saat ini ke dalam `steps` setelah setiap penambahan elemen.
-
-### Fungsi Update Fig
-- `def update_fig(arr, rects, texts, start_time)`: Mendefinisikan fungsi untuk memperbarui visualisasi pada setiap frame.
-  - Menghitung waktu yang telah berlalu dan memperbarui judul grafik.
-  - Looping untuk memperbarui tinggi dan teks dari setiap batang pada grafik.
-
-### Interaksi Pengguna dan Pembuatan Array Acak
-- Meminta pengguna memasukkan jumlah indeks dan batasan nilai maksimum indeks.
-- Membuat array acak berdasarkan input pengguna.
-
-### Pengukuran Waktu dan Visualisasi
-- Menyimpan waktu mulai dan selesai.
-- Menghitung dan mencetak waktu yang dibutuhkan untuk proses sorting.
-
-### Setup Visualisasi
-- Mengatur tema visualisasi menjadi dark background.
-- Membuat subplot untuk visualisasi.
-- Mengatur warna batang.
-- Membuat batang pada grafik berdasarkan langkah pertama dari sorting.
-- Menambahkan teks pada setiap batang.
-- Mengatur batas x dan y pada grafik.
-
-### Animasi dan Tampilan#
-- Membuat animasi dengan memperbarui grafik pada setiap frame.
-- Menampilkan visualisasi.
+### Animation and Display
+- Create an animation by updating the chart at each frame.
+- Display the visualization.
 
 
-## Penjelasan Kode Quick Sort Visualized : `TB2_QuickSort.py`
+## Visualized Insertion Sort Code Explanation: `TB2_InsertionSort.py`
 
-### Import Modul
-- `import random`: Mengimpor modul `random` untuk menghasilkan data acak.
-- `import matplotlib.pyplot as plt`: Mengimpor `pyplot` dari `matplotlib` untuk visualisasi data.
-- `import matplotlib.animation as animation`: Mengimpor `animation` dari `matplotlib` untuk membuat animasi visualisasi.
-- `import easygui`: Mengimpor `easygui` untuk membuat GUI sederhana yang memungkinkan pengguna memasukkan data.
-- `import time`: Mengimpor modul `time` untuk mengukur waktu eksekusi.
+### Import Module
+- `import random`: Imports the `random` module to generate random data.
+- `import matplotlib.pyplot as plt`: Imports `pyplot` from `matplotlib` for data visualization.
+- `import matplotlib.animation as animation`: Imports `animation` from `matplotlib` to animate the visualization.
+- `import easygui`: Imports `easygui` to create a simple GUI that allows users to enter data.
+- `import time`: Imports the `time` module to measure execution time.
 
-### Fungsi Quick Sort Visualized
-- `def quick_sort_visualized(arr, low, high, steps)`: Mendefinisikan fungsi untuk melakukan quick sort dan visualisasi.
-  - `if low < high`: Jika indeks rendah lebih kecil dari indeks tinggi, lanjutkan proses.
-  - `pi = partition(arr, low, high, steps)`: Memanggil fungsi `partition` untuk mendapatkan indeks pivot.
-  - Rekursif memanggil `quick_sort_visualized` untuk sub-array kiri dan kanan dari pivot.
+### Visualized Insertion Sort Function
+- Defines the function `insertion_sort_visualized(arr)` which accepts an array `arr` as parameter:
+  - `n = len(arr)`: Gets the length of the array.
+  - `steps = []`: Initialize a list to store the sorting steps.
+  - Looping `for i in range(1, n)`: Accesses each element of the array starting from the second element.
+  - `key = arr[i]`: Stores the current element as the key.
+  - `j = i - 1`: Initialize the variable `j` to compare the previous element.
+  - Looping `while j >= 0 and key < arr[j]`: Moves the element larger than key one position forward from the current position.
+  - `arr[j + 1] = key`: Places the key in the correct position.
+  - `steps.append(arr.copy())`: Adds a copy of the current array into `steps`.
+  - `return steps`: Returns the sorting steps.
 
-### Fungsi Partition
-- `def partition(arr, low, high, steps)`: Mendefinisikan fungsi untuk mempartisi array.
-  - `pivot = arr[high]`: Menetapkan elemen terakhir sebagai pivot.
-  - `i = low - 1`: Inisialisasi indeks elemen lebih kecil.
-  - Loop untuk membandingkan setiap elemen dengan pivot dan melakukan pertukaran jika perlu.
-  - Pertukaran elemen pivot ke posisi yang benar.
-  - `steps.append(arr.copy())`: Menambahkan salinan array saat ini ke dalam `steps` setelah setiap pertukaran.
-  - Mengembalikan indeks pivot.
+### Update Fig Function
+- Defines the function `update_fig(arr, rects, texts, start_time)` to update the visualization at each frame:
+  - `elapsed_time = time.time() - start_time`: Calculates the elapsed time.
+  - Looping to update the height and texts of each bar on the graph.
+  - `ax.set_title(...)`: Updates the chart title with the elapsed time.
 
-### Fungsi Update Fig
-- `def update_fig(arr, rects, texts, start_time)`: Mendefinisikan fungsi untuk memperbarui visualisasi pada setiap frame.
-  - Menghitung waktu yang telah berlalu dan memperbarui judul grafik.
-  - Loop untuk memperbarui tinggi dan teks dari setiap batang pada grafik.
+### User Interaction and Random Array Creation
+- `num_indices = int(easygui.enterbox(...))`: Prompts the user to enter the number of indices.
+- `value_range = int(easygui.enterbox(...))`: Prompts the user to enter the maximum value range.
+- `arr = random.sample(range(1, value_range + 1), num_indices)`: Generates a random array based on user input.
 
-### Interaksi Pengguna dan Pembuatan Array Acak
-- Meminta pengguna memasukkan jumlah indeks dan batasan nilai maksimum indeks.
-- Membuat array acak berdasarkan input pengguna.
+### Time Measurement and Visualization
+- `start_time = time.time()`: Stores the start time.
+- `steps = insertion_sort_visualized(arr)`: Performs insertion sort while visualizing it.
+- `end_time = time.time()`: Stores the end time.
+- `elapsed_time = end_time - start_time`: Calculates the time taken for the sorting process.
+- `print(...)`: Prints the time taken.
 
-### Pengukuran Waktu dan Visualisasi
-- Menyimpan waktu mulai dan selesai.
-- Menghitung dan mencetak waktu yang dibutuhkan untuk proses sorting.
+### Visualization Setup
+- `plt.style.use('dark_background')`: Sets the visualization theme to dark background.
+- `fig,ax = plt.subplots(...)`: Create subplots for the visualization.
+- `colors = [plt.cm.viridis(i / len(arr)) for i in range(len(arr))]`: Set the color of the bar.
+- `rects = ax.bar(...)`: Creates a bar on the chart based on the first step of sorting.
+- `texts = [ax.text(...) for rect in rects]`: Adds text to each bar.
+- `ax.set_xlim(0, len(arr))`, `ax.set_ylim(0, int(1.1 * max(arr)))`: Set the x and y limits on the graph.
 
-### Setup Visualisasi
-- Mengatur tema visualisasi menjadi dark background.
-- Membuat subplot untuk visualisasi.
-- Mengatur warna batang.
-- Membuat batang pada grafik berdasarkan langkah pertama dari sorting.
-- Menambahkan teks pada setiap batang.
-- Mengatur batas x dan y pada grafik.
-
-### Animasi dan Tampilan
-- Membuat animasi dengan memperbarui grafik pada setiap frame.
-- Menampilkan visualisasi.
+### Animation and Display
+- `ani = animation.FuncAnimation(...)`: Creates an animation by updating the graph at each frame.
+- `plt.show()`: Display the visualization.
 
 
-## Penjelasan Kode Visualisasi Selection Sort : `TB2_SelectionSort.py`
+## Explanation of Merge Sort Visualized Code: `TB2_MergeSort.py`
 
-### Import Modul
-- `import random`: Mengimpor modul `random` untuk menghasilkan data acak.
-- `import matplotlib.pyplot as plt`: Mengimpor `pyplot` dari `matplotlib` untuk visualisasi data.
-- `import matplotlib.animation as animation`: Mengimpor `animation` dari `matplotlib` untuk membuat animasi visualisasi.
-- `import easygui`: Mengimpor `easygui` untuk membuat GUI sederhana yang memungkinkan pengguna memasukkan data.
-- `import time`: Mengimpor modul `time` untuk mengukur waktu eksekusi.
+### Import Modules
+- `import random`: Imports the `random` module to generate random data.
+- `import matplotlib.pyplot as plt`: Imports `pyplot` from `matplotlib` for data visualization.
+- `import matplotlib.animation as animation`: Imports `animation` from `matplotlib` to create visualization animations.
+- `import easygui`: Imports `easygui` for creating a simple GUI that allows the user to input data.
+- `import time`: Imports the `time` module to measure execution time.
 
-### Fungsi Selection Sort Visualized
-- `def selection_sort_visualized(arr)`: Mendefinisikan fungsi untuk melakukan selection sort dan visualisasi.
-  - `n = len(arr)`: Menentukan panjang array.
-  - `steps = []`: Inisialisasi list untuk menyimpan langkah-langkah visualisasi.
-  - Loop untuk setiap elemen di array.
-    - `min_idx = i`: Menetapkan indeks minimum saat ini.
-    - Loop kedua untuk mencari elemen terkecil di sisa array.
-      - Jika elemen lebih kecil ditemukan, perbarui `min_idx`.
-    - Tukar elemen saat ini dengan elemen terkecil yang ditemukan.
-    - `steps.append(arr.copy())`: Menambahkan salinan array saat ini ke dalam `steps`.
-  - Mengembalikan `steps` yang berisi langkah-langkah visualisasi.
+### Merge Sort Visualized Function
+- `def merge_sort_visualized(arr, steps, left=0, right=None)`: Defines a function to perform merge sort and visualization.
+  - `if right is None`: If `right` is not specified, set it to the length of the array.
+  - `if right - left > 1`: If the sub-array has more than one element, proceed with division.
+  - `mid = (left + right) // 2`: Determine the midpoint.
+  - Recursively call `merge_sort_visualized` for the left and right sub-arrays.
+  - Call the `merge` function to merge the sub-arrays.
 
-### Fungsi Update Fig
-- `def update_fig(arr, rects, texts, start_time)`: Mendefinisikan fungsi untuk memperbarui visualisasi pada setiap frame.
-  - `elapsed_time = time.time() - start_time`: Menghitung waktu yang telah berlalu.
-  - Loop untuk memperbarui tinggi dan teks dari setiap batang pada grafik.
-  - `ax.set_title(...)`: Memperbarui judul grafik dengan waktu yang telah berlalu.
+### Merge Function
+- `def merge(arr, steps, left, mid, right)`: Defines a function to merge two sub-arrays.
+  - `L = arr[left:mid]` and `R = arr[mid:right]`: Split the array into two parts.
+  - `i = j = 0` and `k = left`: Initialize indices for the left sub-array, right sub-array, and the merged array.
+  - Loop to compare and merge elements from both sub-arrays.
+  - Add remaining elements from the left or right sub-array if any.
+  - `steps.append(arr.copy())`: Adds a copy of the current array to `steps` after each element addition.
 
-### Interaksi Pengguna dan Pembuatan Array Acak
-- `num_indices = int(easygui.enterbox(...))`: Meminta pengguna memasukkan jumlah indeks.
-- `value_range = int(easygui.enterbox(...))`: Meminta pengguna memasukkan batasan nilai maksimum indeks.
-- `arr = random.sample(range(1, value_range + 1), num_indices)`: Membuat array acak berdasarkan input pengguna.
+### Update Fig Function
+- `def update_fig(arr, rects, texts, start_time)`: Defines a function to update the visualization on each frame.
+  - Calculate the elapsed time and update the graph's title.
+  - Loop to update the height and text of each bar in the graph.
 
-### Pengukuran Waktu dan Visualisasi
-- `start_time = time.time()`: Menyimpan waktu mulai.
-- `steps = selection_sort_visualized(arr)`: Melakukan selection sort dan menyimpan langkah-langkah visualisasi.
-- `end_time = time.time()`: Menyimpan waktu selesai.
-- `elapsed_time = end_time - start_time`: Menghitung waktu yang dibutuhkan untuk proses sorting.
-- `print(...)`: Mencetak waktu yang dibutuhkan untuk proses sorting.
+### User Interaction and Random Array Creation
+- Ask the user to enter the number of indices and the maximum index value limit.
+- Create a random array based on user input.
 
-### Setup Visualisasi
-- `plt.style.use('dark_background')`: Mengatur tema visualisasi menjadi dark background.
-- `fig, ax = plt.subplots(...)`: Membuat subplot untuk visualisasi.
-- `colors = [...]`: Mengatur warna batang berdasarkan panjang array.
-- `rects = ax.bar(...)`: Membuat batang pada grafik berdasarkan langkah pertama dari sorting.
-- `texts = [...]`: Menambahkan teks pada setiap batang.
-- `ax.set_xlim(0, len(arr))` dan `ax.set_ylim(0, int(1.1 * max(arr)))`: Mengatur batas x dan y pada grafik.
+### Time Measurement and Visualization
+- Store start and end times.
+- Calculate and print the time taken for the sorting process.
 
-### Animasi dan Tampilan
-- `ani = animation.FuncAnimation(...)`: Membuat animasi dengan memperbarui grafik pada setiap frame.
-- `plt.show()`: Menampilkan visualisasi.
+### Visualization Setup
+- Set the visualization theme to dark background.
+- Create a subplot for visualization.
+- Set bar colors.
+- Create bars on the graph based on the first step of sorting.
+- Add text to each bar.
+- Set x and y limits on the graph.
+
+### Animation and Display
+- Create an animation by updating the graph on each frame.
+- Display the visualization.
+
+
+## Explanation of Quick Sort Visualized Code: `TB2_QuickSort.py`
+
+### Import Modules
+- `import random`: Imports the `random` module to generate random data.
+- `import matplotlib.pyplot as plt`: Imports `pyplot` from `matplotlib` for data visualization.
+- `import matplotlib.animation as animation`: Imports `animation` from `matplotlib` to create visualization animations.
+- `import easygui`: Imports `easygui` for creating a simple GUI that allows the user to input data.
+- `import time`: Imports the `time` module to measure execution time.
+
+### Quick Sort Visualized Function
+- `def quick_sort_visualized(arr, low, high, steps)`: Defines a function to perform quick sort and visualization.
+  - `if low < high`: If the low index is smaller than the high index, proceed with the process.
+  - `pi = partition(arr, low, high, steps)`: Call the `partition` function to get the pivot index.
+  - Recursively call `quick_sort_visualized` for the left and right sub-arrays of the pivot.
+
+### Partition Function
+- `def partition(arr, low, high, steps)`: Defines a function to partition the array.
+  - `pivot = arr[high]`: Set the last element as the pivot.
+  - `i = low - 1`: Initialize the index of smaller element.
+  - Loop to compare each element with pivot and swap if necessary.
+  - Swap the pivot element to its correct position.
+  - `steps.append(arr.copy())`: Adds a copy of the current array to `steps` after each swap.
+  - Return the pivot index.
+
+### Update Fig Function
+- `def update_fig(arr, rects, texts, start_time)`: Defines a function to update the visualization on each frame.
+  - Calculate the elapsed time and update the graph's title.
+  - Loop to update the height and text of each bar in the graph.
+
+### User Interaction and Random Array Creation
+- Ask the user to enter the number of indices and the maximum index value limit.
+- Create a random array based on user input.
+
+### Time Measurement and Visualization
+- Store start and end times.
+- Calculate and print the time taken for the sorting process.
+
+### Visualization Setup
+- Set the visualization theme to dark background.
+- Create a subplot for visualization.
+- Set bar colors.
+- Create bars on the graph based on the first step of sorting.
+- Add text to each bar.
+- Set x and y limits on the graph.
+
+### Animation and Display
+- Create an animation by updating the graph on each frame.
+- Display the visualization.
+
+
+## Explanation of Visualization Code for Selection Sort: `TB2_SelectionSort.py`
+
+### Import Modules
+- `import random`: Imports the `random` module to generate random data.
+- `import matplotlib.pyplot as plt`: Imports `pyplot` from `matplotlib` for data visualization.
+- `import matplotlib.animation as animation`: Imports `animation` from `matplotlib` to create visualization animations.
+- `import easygui`: Imports `easygui` for creating a simple GUI that allows the user to input data.
+- `import time`: Imports the `time` module to measure execution time.
+
+### Selection Sort Visualized Function
+- `def selection_sort_visualized(arr)`: Defines a function to perform selection sort and visualization.
+  - `n = len(arr)`: Determine the length of the array.
+  - `steps = []`: Initialize a list to store visualization steps.
+  - Loop for each element in the array.
+    - `min_idx = i`: Set the current minimum index.
+    - Second loop to find the smallest element in the remaining array.
+      - If a smaller element is found, update `min_idx`.
+    - Swap the current element with the smallest found element.
+    - `steps.append(arr.copy())`: Adds a copy of the current array to `steps`.
+  - Return `steps` containing visualization steps.
+
+### Update Fig Function
+- `def update_fig(arr, rects, texts, start_time)`: Defines a function to update the visualization on each frame.
+  - `elapsed_time = time.time() - start_time`: Calculate the elapsed time.
+  - Loop to update the height and text of each bar in the graph.
+  - `ax.set_title(...)`: Update the graph's title with the elapsed time.
+
+### User Interaction and Random Array Creation
+- `num_indices = int(easygui.enterbox(...))`: Ask the user to enter the number of indices.
+- `value_range = int(easygui.enterbox(...))`: Ask the user to enter the maximum index value limit.
+- `arr = random.sample(range(1, value_range + 1), num_indices)`: Create a random array based on user input.
+
+### Time Measurement and Visualization
+- `start_time = time.time()`: Store the start time.
+- `steps = selection_sort_visualized(arr)`: Perform selection sort and store visualization steps.
+- `end_time = time.time()`: Store the end time.
+- `elapsed_time = end_time - start_time`: Calculate the time taken for the sorting process.
+- `print(...)`: Print the time taken for the sorting process.
+
+### Visualization Setup
+- `plt.style.use('dark_background')`: Set the visualization theme to dark background.
+- `fig, ax = plt.subplots(...)`: Create a subplot for visualization.
+- `colors = [...]`: Set bar colors based on the length of the array.
+- `rects = ax.bar(...)`: Create bars on the graph based on the first step of sorting.
+- `texts = [...]`: Add text to each bar.
+- `ax.set_xlim(0, len(arr))` and `ax.set_ylim(0, int(1.1 * max(arr)))`: Set x and y limits on the graph.
+
+### Animation and Display
+- `ani = animation.FuncAnimation(...)`: Create an animation by updating the graph on each frame.
+- `plt.show()`: Display the visualization.
